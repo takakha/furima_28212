@@ -69,6 +69,7 @@ Things you may want to cover:
 - has_one_attached :image
 - belongs_to :user
 - has_one :order
+- has_many :addresses, through: items_addresses
 - belongs_to_active_hash :category
 - belongs_to_active_hash :status
 - belongs_to_active_hash :delivery_fee
@@ -108,3 +109,17 @@ Things you may want to cover:
 ### Association
 
 - belongs_to_active_hash :prefecture
+- has_many :items, through: items_addresses
+
+## items_address テーブル
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| item    | references | null: false, foreign_key: true |
+| address | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :item
+- belongs_to :address
+
