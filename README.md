@@ -39,18 +39,14 @@ Things you may want to cover:
 | birthday            | date      | null: false |
 
 
-### ActiveHash
-
-- birthday_year
-- birthday_mon
-- birthday_day
-
 
 ### Association
 
 - has_many :items
 - has_one :order
-
+- belongs_to_active_hash :birthday_year
+- belongs_to_active_hash :birthday_mon
+- belongs_to_active_hash :birthday_day
 
 ## items テーブル
 
@@ -67,18 +63,12 @@ Things you may want to cover:
 | user            | references | null: false, foreign_key: true    | 
  
 
-### ActiveHash
-- category
-- status
-- delivery_fee
-- area
-- days
 
 ### Association
 
 - has_one_attached :image
 - belongs_to :user
-- has_one :oder
+- has_one :order
 - belongs_to_active_hash :category
 - belongs_to_active_hash :status
 - belongs_to_active_hash :delivery_fee
@@ -90,7 +80,6 @@ Things you may want to cover:
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| price   | integer    | null:false                     |
 | user    | references | null:false, foreign_key: true  |
 | item    | references | null:false  foreign_key: true  |
 
@@ -100,7 +89,6 @@ Things you may want to cover:
 
 - belongs_to :user
 - belongs_to :item
-- has_one :address
 
 ##  addressesテーブル
 
@@ -111,16 +99,12 @@ Things you may want to cover:
 | city           | string     | null:false                     |
 | block          | string     | null:false                     |
 | building       | string     | null:false                     |
-| phone_number   | integer    | null:false                     |
-| oder           | references | null:false, foreign_key: true  |
+| phone_number   | string     | null:false                     |
 
 
 
-### ActiveHash
 
-- prefecture
 
 ### Association
 
-- belongs_to :price
 - belongs_to_active_hash :prefecture
