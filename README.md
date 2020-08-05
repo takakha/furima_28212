@@ -81,7 +81,7 @@ Things you may want to cover:
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
 | user    | references | null:false, foreign_key: true  |
-| item    | references | null:false  foreign_key: true  |
+| item    | references | null:false, foreign_key: true  |
 
 
 
@@ -98,7 +98,7 @@ Things you may want to cover:
 | prefecture_id  | integer    | null:false                     |
 | city           | string     | null:false                     |
 | block          | string     | null:false                     |
-| building       | string     | null:false                     |
+| building       | string     |                                |
 | phone_number   | string     | null:false                     |
 
 
