@@ -12,7 +12,7 @@ class User < ApplicationRecord
           PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
           validates_format_of :password, with: PASSWORD_REGEX
        
-          with_options format: {with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/} do
+          with_options format: {with: /\A[ぁ-んァ-ン一-龥]/} do
             validates :first_name
             validates :last_name
           end

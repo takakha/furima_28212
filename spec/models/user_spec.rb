@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe User do
+  describe '#create' do
     before do
       @user = FactoryBot.build(:user)
     end
@@ -74,7 +74,63 @@ end
       @user.password_confirmation = "abcdef"
       @user.valid?
       expect(@user.errors.full_messages).to include("Password is invalid")
-    end    
+    end
+    
+    it "first_nameが空では登録できないこと" do
+      @user.first_name = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name can't be blank")
+    end
+
+    it "last_nameが空では登録できないこと" do
+      @user.last_name = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Last name can't be blank")
+    end
+
+    it "first_name_kanaが空では登録できないこと" do
+      @user.first_name_kana = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name kana can't be blank")
+    end
+
+    it "last_name_kanaが空では登録できないこと" do
+      @user.last_name_kana = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Last name kana can't be blank")
+    end
+
+    it "birthdayが空では登録できないこと" do
+      @user.birthday = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Birthday can't be blank")
+    end 
+
+    it "first_nameが全角漢字、ひらがな、カタカナ以外では登録できないこと" do
+      @user.first_name = "aaaa"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name is invalid")
+    end
+
+
+    it "last_nameが全角漢字、ひらがな、カタカナ以外では登録できないこと" do
+      @user.last_name = "AAAA"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Last name is invalid")
+    end
+
+    it "first_name_kanaが全角カタカナ以外では登録できないこと" do
+      @user.first_name_kana = "あああ"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name kana is invalid")
+    end
+
+    it "last_name_kanaが全角カタカナ以外では登録できないこと" do
+      @user.last_name_kana = "嗚呼"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Last name kana is invalid")
+    end
+
 end
 end
 end
