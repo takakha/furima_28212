@@ -12,7 +12,7 @@ class Item < ApplicationRecord
 
    #ジャンルの選択が「--」の時は保存できないようにする
    validates :category_id, :status_id, :delively_fee_id, :area_id, :day_id, numericality: { other_than: 1 }
-end
+
 has_one_attached :image
 belongs_to :user
 has_one :order
