@@ -12,7 +12,8 @@ class Item < ApplicationRecord
 
    #ジャンルの選択が「--」の時は保存できないようにする
    validates :category_id, :status_id, :delivery_fee_id, :area_id, :day_id, numericality: { other_than: 1 }
-
+   #価格の範囲が￥300〜￥9,999,999であるようにする
+   validates :price, inclusion: {in: 300..9999999 }
   has_one_attached :image
   belongs_to :user
   has_one :order
