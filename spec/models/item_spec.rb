@@ -34,28 +34,28 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Text can't be blank")
       end
       
-      it 'category_idが空では登録できないこと' do
-        @item.category_id = ''
+      it 'category_idが1では登録できないこと' do
+        @item.category_id = 1        
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank", "Category is not a number")
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
       
-      it 'status_idが空では登録できないこと' do
-        @item.status_id = ''
+      it 'status_idが1では登録できないこと' do
+        @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status can't be blank", "Status is not a number")
+        expect(@item.errors.full_messages).to include("Status must be other than 1")
       end
 
-      it 'delivery_fee_idが空では登録できないこと' do
-        @item.delivery_fee_id = ''
+      it 'delivery_fee_idが1では登録できないこと' do
+        @item.delivery_fee_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery fee can't be blank", "Delivery fee is not a number")
+        expect(@item.errors.full_messages).to include("Delivery fee must be other than 1")
       end
 
-      it 'day_idが空では登録できないこと' do
-        @item.day_id = ''
+      it 'day_idが1では登録できないこと' do
+        @item.day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Day can't be blank", "Day is not a number")
+        expect(@item.errors.full_messages).to include("Day must be other than 1")
       end
 
 
@@ -65,11 +65,17 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price can't be blank")    
       end
         
-      it 'price(価格)の範囲外では登録できないこと' do
+      it 'price(価格)が300未満では登録できないこと' do
         @item.price = 100
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not included in the list")    
       end
+      
+      it 'price(価格)が10,000,000以上では登録できないこと' do
+        @item.price = 200000001
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not included in the list")  
+      end
     end
-    end
+  end
 
