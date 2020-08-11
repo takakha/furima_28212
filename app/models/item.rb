@@ -8,15 +8,26 @@ class Item < ApplicationRecord
   belongs_to_active_hash :day
 
    #空の投稿を保存できないようにする
-   validates :item, :image, :text, :price,:category_id ,:status_id ,:delivery_fee_id , :area_id, :day_id,  presence: true
-
+   with_options presence: true do
+   validates :item
+   validates :image
+   validates :text
+   validates :price
    #ジャンルの選択が「--」の時は保存できないようにする
-   validates :category_id, :status_id, :delivery_fee_id, :area_id, :day_id, numericality: { other_than: 1 }
+   with_options numericality: { other_than: 1 } do
+   validates :category_id
+   validates :status_id
+   validates :delivery_fee_id
+   validates :area_id
+   validates :day_id
+   end
    #価格の範囲が￥300〜￥9,999,999であるようにする
-   validates :price, inclusion: {in: 300..9999999 }
+   with_options inclusion: {in: 300..9999999 } do
+   validates :price
+   end
+  end
   has_one_attached :image
   belongs_to :user
   has_one :order
   
-
 end
