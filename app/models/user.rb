@@ -23,6 +23,6 @@ class User < ApplicationRecord
     end
   end
 
-     has_many :items
-     has_one  :order
+  has_many :items
+  has_one  :order
 end
