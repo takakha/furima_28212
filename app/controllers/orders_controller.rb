@@ -1,9 +1,6 @@
 class OrdersController < ApplicationController
-  
-  def index
-  end
 
-  def create
+  def index
   end
 
 end
