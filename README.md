@@ -111,15 +111,4 @@ Things you may want to cover:
 - belongs_to_active_hash :prefecture
 - has_many :items, through: items_addresses
 
-## items_address テーブル
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| item    | references | null: false, foreign_key: true |
-| address | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :item
-- belongs_to :address
 
