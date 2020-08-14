@@ -69,7 +69,7 @@ Things you may want to cover:
 - has_one_attached :image
 - belongs_to :user
 - has_one :order
-- has_many :addresses, through: items_addresses
+- has_one :address
 - belongs_to_active_hash :category
 - belongs_to_active_hash :status
 - belongs_to_active_hash :delivery_fee
@@ -101,7 +101,7 @@ Things you may want to cover:
 | block          | string     | null:false                     |
 | building       | string     |                                |
 | phone_number   | string     | null:false                     |
-
+| item           | references | null:false, foreign_key: true  |
 
 
 
@@ -109,6 +109,6 @@ Things you may want to cover:
 ### Association
 
 - belongs_to_active_hash :prefecture
-- has_many :items, through: items_addresses
+- belongs_to :item
 
 
