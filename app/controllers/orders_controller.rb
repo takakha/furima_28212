@@ -6,9 +6,11 @@ class OrdersController < ApplicationController
   
 
   def create
-    binding.pry
-    @order = OrderAddress.new(order_params)
+    @order = OrderAddress.new(postcode: order_params[:postcode], prefecture_id: order_params[:prefecture_id],
+      city: order_params[:city], block: order_params[:block], building: order_params[:building],phone_number: order_params[:phone_number],
+       item_id: order_params[:item_id],user_id: order_params[:user_id])
     if @order.valid?
+      pay_item
       @order.save  # バリデーションをクリアした時
       return redirect_to root_path
     else
@@ -22,12 +24,8 @@ class OrdersController < ApplicationController
     params.permit(:token, :postcode, :prefecture_id, :city, :block, :building, :phone_number,:item_id).merge(user_id: current_user.id)
   end
 
-  def info_item
-      @item = Item.find(params[:id])
-  end       
-
   def pay_item
-
+    @item = Item.find(params[:item_id])
     Payjp.api_key = "sk_test_6614d54c67e208a9f3a5c6d7"# PAY.JPテスト秘密鍵
     Payjp::Charge.create(
       amount: @item.price,  # 商品の値段
