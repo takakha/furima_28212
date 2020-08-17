@@ -6,11 +6,8 @@ class OrdersController < ApplicationController
   
 
   def create
-    
-    @order = OrderAddress.new(postcode: order_params[:postcode], prefecture_id: order_params[:prefecture_id],
-    city: order_params[:city], block: order_params[:block], building: order_params[:building],phone_number: order_params[:phone_number],
-     item_id: order_params[:item_id],user_id: order_params[:user_id])
-    
+    binding.pry
+    @order = OrderAddress.new(order_params)
     if @order.valid?
       @order.save  # バリデーションをクリアした時
       return redirect_to root_path
@@ -30,6 +27,8 @@ class OrdersController < ApplicationController
   end       
 
   def pay_item
+    binding.pry
+
     Payjp.api_key = "sk_test_6614d54c67e208a9f3a5c6d7"# PAY.JPテスト秘密鍵
     Payjp::Charge.create(
       amount: @item.price,  # 商品の値段
