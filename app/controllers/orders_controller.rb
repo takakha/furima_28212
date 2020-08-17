@@ -27,7 +27,6 @@ class OrdersController < ApplicationController
   end       
 
   def pay_item
-    binding.pry
 
     Payjp.api_key = "sk_test_6614d54c67e208a9f3a5c6d7"# PAY.JPテスト秘密鍵
     Payjp::Charge.create(

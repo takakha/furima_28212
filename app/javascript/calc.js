@@ -1,4 +1,4 @@
-window.addEventListener('load', function(){
+function calc(){
 
   var addTaxPrice = document.getElementById("add-tax-price")
   var profit = document.getElementById("profit")
@@ -9,5 +9,5 @@ window.addEventListener('load', function(){
     addTaxPrice.innerHTML = `${Math.floor(inputs * 0.1)}`
     profit.innerHTML = `${Math.floor(inputs * 0.9)}`
    })
-   
-})
+  }
+window.addEventListener('load', calc);
