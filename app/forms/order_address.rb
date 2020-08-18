@@ -14,9 +14,8 @@ class OrderAddress
     
     # 取引の情報を保存
     order = Order.create( user_id: user_id, item_id: item_id)
-
     # 住所の情報を保存
-    Address.create(postcode: postcode, prefecture_id: prefecture_id, city: city, block: block, building: building, phone_number: phone_number, item_id: order.id)
+    Address.create(postcode: postcode, prefecture_id: prefecture_id, city: city, block: block, building: building, phone_number: phone_number, item_id: order.item_id)
   end
 
 end
