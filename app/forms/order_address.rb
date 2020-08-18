@@ -4,10 +4,10 @@ class OrderAddress
   attr_accessor :postcode, :prefecture_id, :city, :block, :building, :phone_number, :user_id ,:item_id
   
   with_options presence: true do
-    validates :postcode, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :postcode, format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
     validates :prefecture_id
     validates :city
-    validates :phone_number
+    validates :phone_number, format: {with: /\A\d{10}$|^\d{11}\z/}
   end
 
   def save
