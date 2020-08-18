@@ -1,8 +1,13 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :move_to_root
+
   def index
     @item = Item.find(params[:item_id])
+#URLを直接入力して購入済みの商品ページへ遷移しようとすると、トップページに遷移する    
+    if @item.order != nil
+      redirect_to root_path
+    end
   end
   
 
@@ -34,9 +39,11 @@ class OrdersController < ApplicationController
       currency:'jpy'                 # 通貨の種類
     )
   end
-
+  #出品者はURLを直接入力して購入ページに遷移しようとすると、トップページに遷移する
   def move_to_root
     @item = Item.find(params[:item_id])
     redirect_to root_path if current_user.id == @item.user_id
   end
+  
+ 
 end
