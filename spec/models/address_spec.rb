@@ -45,6 +45,11 @@ RSpec.describe Address, type: :model do
       expect(@address.errors.full_messages).to include("Block can't be blank")
     end
 
+    it '建物は空でも保存できること' do
+      @address.building = nil
+      expect(@address).to be_valid
+    end
+
     it '電話番号が空では登録できないこと' do
       @address.phone_number = ''
       @address.valid? 
