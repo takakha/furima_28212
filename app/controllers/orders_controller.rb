@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_action :move_to_root
 
   def index
+    @order = OrderAddress.new
     @item = Item.find(params[:item_id])
  #URLを直接入力して購入済みの商品ページへ遷移しようとすると、トップページに遷移する    
     if @item.order != nil
