@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
 
   def index
     @item = Item.find(params[:item_id])
-#URLを直接入力して購入済みの商品ページへ遷移しようとすると、トップページに遷移する    
+ #URLを直接入力して購入済みの商品ページへ遷移しようとすると、トップページに遷移する    
     if @item.order != nil
       redirect_to root_path
     end
