@@ -17,16 +17,6 @@ RSpec.describe OrderAddress, type: :model do
 
   context '購入がうまくいかないとき' do
     
-    it '必須項目が存在すれば登録できる' do
-      @seller.save
-      same_user =  FactoryBot.build(:order_address)
-      same_user.item_id = @seller.item_id
-      same_user.valid?
-      expect(@seller).to be_valid
-    end
-
-
-
     it '郵便番号が空では登録できないこと' do
       @buyer.postcode = ''
       @buyer.valid?   
