@@ -132,9 +132,13 @@
           <%= image_tag item.image, class: "item-img" %>
 
           <%# 商品が売れていればsold outの表示 %>
-          <div class='sold-out'>
-            <span>Sold Out!!</span>
-          </div>
+          <% @orders.each do |order|%>
+            <% if order.item_id == item.id %>
+              <div class='sold-out'>
+              <span>Sold Out!!</span>
+            </div>
+            <% end%>
+          <% end %>
           <%# //商品が売れていればsold outの表示 %>
 
         </div>
@@ -155,7 +159,7 @@
       </li>
 
       <%# 商品がない場合のダミー %>
-      <%# 商品がある場合は表示されないようにしましょう %>
+      <% if @item.present?%>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "item-img" %>
@@ -173,7 +177,7 @@
         </div>
         <% end %>
       </li>
-      <%# //商品がある場合は表示されないようにしましょう %>
+      <% end %>
       <%# //商品がない場合のダミー %>
     </ul>
   </div>
