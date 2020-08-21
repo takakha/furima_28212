@@ -21,6 +21,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @user = @item.user
+    @orders = Order.all
   end
 
   def move_to_index
