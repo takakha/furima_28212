@@ -19,6 +19,13 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+      item = Item.find(params[:id])
+      if item.destroy
+      redirect_to root_path
+      end
+  end
+
   def show
     @item = Item.find(params[:id])
     @user = @item.user
@@ -27,7 +34,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    #購入者はURLを直接入力して編集ページに遷移しようとすると、トップページに遷移する
+    #出品者以外はURLを直接入力して編集ページに遷移しようとすると、トップページに遷移する
     unless current_user.id == @item.user_id
     redirect_to root_path
     end
