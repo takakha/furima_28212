@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_item, only: [:destroy, :show, :edit, :update]
   def index
-    @items = Item.all.order("created_at DESC")
+    @items = Item.all.order('created_at DESC')
     @orders = Order.all
   end
 
@@ -20,11 +20,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-      if @item.destroy
+    if @item.destroy
       redirect_to root_path
-      else
-        render :show
-      end
+    else
+      render :show
+    end
   end
 
   def show
@@ -33,10 +33,8 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    #出品者以外はURLを直接入力して編集ページに遷移しようとすると、トップページに遷移する
-    unless current_user.id == @item.user_id
-    redirect_to root_path
-    end
+    # 出品者以外はURLを直接入力して編集ページに遷移しようとすると、トップページに遷移する
+    redirect_to root_path unless current_user.id == @item.user_id
   end
 
   def update
