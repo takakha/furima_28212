@@ -11,6 +11,6 @@ class Address < ApplicationRecord
     VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/.freeze
     validates_format_of :phone_number, with: VALID_PHONE_REGEX
     validates :prefecture_id
-  end
+   end
   validates :prefecture_id, numericality: { other_than: 1 }
 end
