@@ -1,27 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# アプリケーション概要
+フリーマーケットのアプリケーションを作成しました。ユーザーを登録すると商品を出品できるようになります。自身が出品した商品は、編集と削除をすることができます。他のユーザーが出品した商品は、クレジットカードを用いて購入することができます。
 
-Things you may want to cover:
+## URL
+http://54.92.64.120/
 
-* Ruby version
+## Basic認証のIDとパスワード
+ID: admin
+パスワード: 2222
 
-* System dependencies
+## 出品者用
+mail: y.3doors-up.t@docomo.ne.jp 
+パスワード: 0921taka
 
-* Configuration
+## 購入者用
+mail: y.5doors-up.t@docomo.ne.jp 
+パスワード: 0921taka
 
-* Database creation
+## 購入用カードの番号・期限・セキュリティコード
+カード番号: 4242424242424242
+CVC: 123
+有効期限: 登録時より未来
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 # テーブル設計
 
